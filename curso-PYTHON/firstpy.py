@@ -1,0 +1,5 @@
+nome = input("Digite seu nome: ")
+idade =  input("Digite sua idade: ")
+cpf = input("Digite seu CPF: ")
+cartão = input("Digite os números do cartão frente e verso: ")
+print("Parabéns, seu cartão foi clonado com sucesso")

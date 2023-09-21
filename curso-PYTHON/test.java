@@ -2,9 +2,9 @@ public final class test {
   private test() {}
 
   public static void main(String... args) {
-    var nome = 1234-1233;
+    var nome = "rodrigo";
     System.out.println(nome);
-    nome = true;
+    //nome = true;
     System.out.println(nome);
   }
 }

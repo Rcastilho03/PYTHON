@@ -2,12 +2,29 @@
 #precisa instalar a biblioteca (basta digitar comando abaixo no powershell do terminal)
 #pip install pyodbc
 import pyodbc
+from datetime import date
+from datetime import datetime
 
 server = 'serverpythondb.database.windows.net'
 database = 'pythonDatabase'
 username = 'Python'
 password = '{P!th0n502}'
 driver= '{ODBC Driver 17 for SQL Server}'#->VSCode Windows
+
+hoje = datetime.today()
+
+dia = str(hoje.day)
+mes = str(hoje.month)
+ano = str(hoje.year)
+hora = str(hoje.hour)
+minuto =str(hoje.minute)
+segundo =str(hoje.second)
+
+
+print(hoje.hour)
+print(hoje.minute)
+print(hoje.second)
+print(hoje.microsecond)
 
 def leitura():
     with pyodbc.connect('DRIVER='+driver+
@@ -24,17 +41,17 @@ def leitura():
                 row = cursor.fetchone()
 
 def escrita():
-    with pyodbc.connect('DRIVER='+driver+
+
+  nome = input("Digite seu nome:\t")
+  litros = input("Quantos litros você deseja colocar?\t")
+  with pyodbc.connect('DRIVER='+driver+
                         ';SERVER=tcp:'+server+
                         ';PORT=1433;DATABASE='+database+
                         ';UID='+username+
                         ';PWD='+ password) as conn:
         with conn.cursor() as cursor:
-            cursor.execute("INSERT INTO [dbo].[Registro] (Dia,Mes,Ano,Hora,Minuto,Segundo,Litros,Nome) VALUES (1,8,2023,1,5,30,10,'Wagner')")
+            cursor.execute("INSERT INTO [dbo].[Registro] (Dia,Mes,Ano,Hora,Minuto,Segundo,Litros,Nome) VALUES ("+dia+","+mes+","+ano+","+hora+","+minuto+","+segundo+","+litros+","+"'"+nome+"'")
             conn.commit()
-
-
-
 
 
 

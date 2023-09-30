@@ -99,14 +99,14 @@ def computeTracking(frame, hue, sat, val):
         xRect, yRect, wRect, hRect = cv2.boundingRect(cntMaxArea)
         #desenha caixa envolvente com espessura 3
         cv2.rectangle(frame, (xRect, yRect), (xRect + wRect, yRect + hRect), (211, 0, 148), 2) #bgr
-        pontoInicial = int(xRect+wRect/2),int(yRect+hRect/2)
+        pontoCentral = int(xRect+wRect/2),int(yRect+hRect/2)
         texto = str(int(xRect+wRect/2))+","+str(int(yRect+hRect/2))
-        cv2.putText(frame, texto, pontoInicial, fontFace = cv2.FONT_HERSHEY_COMPLEX, fontScale = 1, color = (250,225,100))
+        cv2.putText(frame, texto, pontoCentral, fontFace = cv2.FONT_HERSHEY_COMPLEX, fontScale = 1, color = (250,225,100))
     return frame, gray
 
 trackbarWindow = "trackbar window"
 cv2.namedWindow(trackbarWindow)
-cv2.resizeWindow("trackbar window", 500,500)
+cv2.resizeWindow("trackbar window", 600,300)
 
 def onChange(val):
     return
